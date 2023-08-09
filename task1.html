@@ -1,184 +1,427 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product portfolio website</title>
-    
-    <!---using internal css for easiness-->
-    <style type="text/css">
-    
-
-    
-      .backgroundimg {
-  background-image: url('logo12.png');
-  opacity: 0.8;
-  background-size: 100% 100%;  
-  background-repeat: no-repeat; 
-  font-size: 25px;
-  
-}
-
-h1{
-   color:brown;
-}
-
-
-h2{color:aqua;}
-
-
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   </style>
-
-
-
+    <title>Gcontrollers4U</title>
+    <style>
+	
+	@media (max-width: 700px) {
+		#header-img {
+			width: 250px !important;
+		}
+	
+		.pricing-option {
+			width: 600px !important;
+		}
+	}
+	
+	@font-face {
+		font-family: 'LuckiestGuyRegular';
+		src: url('controllers4u-luckiest-guy-regular.ttf') format('truetype');
+	}
+	
+	* {
+		box-sizing: border-box;
+	
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
+		font-stretch: ultra-expanded;
+		line-height: 1.5;
+	
+		margin: 0;
+		padding: 0;
+	}
+	
+	html {
+		background-color: #F5F5F5;
+	
+		margin: 0;
+		padding: 0;
+	}
+	
+	body {
+		min-width: 650px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 75px;
+	}
+	
+	.nav-link,
+	input[type="submit"],
+	h1,
+	h2,
+	h3,
+	.price,
+	.buy-now-button {
+		font-family: 'LuckiestGuyRegular';
+		font-weight: lighter;
+	}
+	
+	::placeholder {
+		color: #9E1624;
+	}
+	
+	/**************************************************************************/
+	
+	header {
+		background-color: #FFFFFF;
+		border-bottom: 2px solid #AAABAF;
+	
+		padding: 20px;
+		min-width: 650px;
+		width: 100%;
+	
+		position: fixed;
+		top: 0;
+		left: 0;
+	
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	#header-img {
+		width: 300px;
+		height: auto;
+	}
+	
+	#nav-bar {
+		list-style: none;
+	
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	
+		display: flex;
+		justify-content: space-between;
+		gap: 25px;
+	}
+	
+	.nav-link {
+		color: #9E1624;
+		text-decoration: none;
+	
+		padding: 5px;
+	}
+	
+	.nav-link:hover {
+		background-color: #9E1624;
+		color: #FFFFFF;
+		cursor: pointer;
+	}
+	
+	.nav-link:active {
+		background-color: #000000;
+		color: #CCAC3F;
+	}
+	
+	/**************************************************************************/
+	
+	#form {
+		text-align: center;
+	
+		margin-top: 100px;
+	
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+	
+	#big-logo {
+		width: 500px;
+		height: auto;
+	
+		margin-bottom: 20px;
+	}
+	
+	#email {
+		color: #9E1624;
+	
+		padding-left: 5px;
+		width: 230px;
+		height: 25px;
+	}
+	
+	#submit {
+		background-color: #9E1624;
+		color: #FFFFFF;
+		font-size: 25px;
+		
+		padding: 5px;
+	}
+	
+	#submit:hover {
+		background-color: #FFFFFF;
+		color: #9E1624;
+		cursor: pointer;
+	}
+	
+	#submit:active {
+		background-color: #000000;
+		color: #CCAC3F;
+	}
+	
+	/**************************************************************************/
+	
+	#features {
+		text-align: center;
+	
+		scroll-margin-top: 100px;
+		margin: auto;
+		max-width: 900px;
+	}
+	
+	#features h2 {
+		margin-bottom: 15px;
+	}
+	
+	#feature-container {
+		margin-top: 30px;
+	
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+	
+	.feature {
+		border-bottom: 1px solid #AAABAF;
+		text-align: left;
+	
+		max-width: 750px;
+		padding: 30px;
+	
+		display: flex;
+		align-items: center;
+	}
+	
+	.feature:last-of-type {
+		border: none;
+	}
+	
+	.feature-img {
+		width: 100px;
+		height: auto;
+		margin-right: 30px;
+	}
+	
+	/**************************************************************************/
+	
+	#video {
+		scroll-margin-top: 110px;
+		align-self: center;
+	}
+	
+	/**************************************************************************/
+	
+	#pricing {
+		text-align: center;
+	
+		scroll-margin-top: 100px;
+	}
+	
+	#pricing h2 {
+		margin-bottom: 15px;
+	}
+	
+	#controllers {
+		margin-top: 45px;
+	
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 50px;
+	}
+	
+	.pricing-option {
+		border: 2px solid #AAABAF;
+		background-color: #FFFFFF;
+	
+		width: 350px;
+		height: 525px;
+	
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.pricing-option h3 {
+		background-color: #CCAC3F;
+		font-size: 22px;
+		padding: 5px;
+		width: 100%;
+	}
+	
+	.controller-img {
+		width: 295px;
+		height: auto;
+		align-self: center;
+	}
+	
+	.pricing-option p {
+		font-size: 12.5px;
+		padding: 10px;
+	}
+	
+	.price {
+		font-size: 30px !important;
+	}
+	
+	.buy-now-button {
+		background-color: #9E1624;
+		color: #FFFFFF;
+		font-size: 20px;
+	
+		margin-bottom: 25px;
+		
+		padding: 5px;
+	}
+	
+	.buy-now-button:hover {
+		background-color: #FFFFFF;
+		color: #9E1624;
+		cursor: pointer;
+	}
+	
+	.buy-now-button:active {
+		background-color: #000000;
+		color: #CCAC3F;
+	}
+	
+	/**************************************************************************/
+	
+	footer {
+		background-color: #FFFFFF;
+		border-top: 2px solid #AAABAF;
+		font-weight: 100;
+		text-align: center;
+	
+		padding-top: 20px;
+		padding-bottom: 10px;
+		width: 100%;
+	
+		bottom: 0;
+		left: 0;
+	}
+		</style>
+    <link rel="icon" href="OIP.jpg" type="image/x-icon">
 </head>
+
 <body>
 
+    <header id="header">
+        <img id="header-img" src="th.jpg" alt="Gcontrollers4U Logo">
 
-<div class ="backgroundimg">
+        <nav id="nav-bar">
+            <a class="nav-link" href="#features">
+                Features
+            </a>
+            <a class="nav-link" href="#video">Who are we?
+            </a>
+            <a class="nav-link" href="#pricing">
+                Pricing
+            </a>
+        </nav>
+    </header>
 
-    <h1>Iphone 14 pro max</h1>
-      <img src="C:\Users\vikas singh\OneDrive\Desktop\cpp-2022-03\IneuByte tasks\download (1).jpg" alt="iphone 14 pro" align="right" heigh="200"width="300"></img>
+    <form id="form" action="https://www.ineubytes.com/email-submit">
+        <img id="big-logo" src="images/big-logo.png" alt="Gcontrollers4U Big Logo">
+        <h2>Join our mailing list for exclusive promotions!</h2>
+        <input id="email" type="email" name="email" placeholder="Enter your email address here..." required>
+        <input id="submit" type="submit" value="SIGN UP">
+    </form>
 
-   <div class="bio">
-    
-    
-    <h2>BIO:</h2><hr>
-    <p align:center><i>Apple's iPhone 14 Pro and Pro Max may look identical to last year's iPhone 13 Pro on the back, but don't let that fool you.<br> 
-        It's the iPhone 14 Pro's screen where there's something different and wonderful going on.<br>
-         The iPhone's display notch, which has defined Face ID iPhones since 2017's iPhone X, has been replaced with a pill-shaped screen cutout that houses an upgraded TrueDepth camera system.<br>
-          On its own, that cutout will make some people happier than the notch did. <br>
-        But it's the space around the cutout, which now shows system alerts and background activities, that's become one of my favorite features.</p>
-      </div></i>
-     
-     
-      <div class="uses">
+    <section id="features">
+        <h2>Experience Osm Gaming at Its Best</h2>
+        <p>Gcontrollers4U offers a wide range of high-quality retro controllers designed to enhance your gaming
+            experience. Whether you're a fan of classic consoles like NES, SNES, or Sega Genesis, we've got you covered.
+            Here's what makes our controllers stand out:</p>
 
+        <div id="feature-container">
+            <div class="feature">
+                <img class="feature-img" src="download (1).jpg" alt="Feature 1">
+                <div>
+                    <h3>Authentic Design</h3>
+                    <p>Our controllers faithfully replicate the look and feel of the original retro controllers,
+                        providing
+                        an authentic gaming experience.</p>
+                </div>
+            </div>
 
-        <h2>USES and  FEATURES</h2><hr>
-      <p>
-        <ul type="disc">
-          
-          <li><b>NETWORK	Technology	:::</b>
-            <abbr title="google ya wiki pe dekh lo">GSM / CDMA / HSPA / EVDO / LTE / 5G</li></abbr>
-            
-            
-            <li><b>BODY:::</b>---Dimensions---	147.5 x 71.5 x 7.9 mm (5.81 x 2.81 x 0.31 in)<br>
-                ---Weight---	206 g (7.27 oz)
-               --- Build---	Glass front (Corning-made glass), glass back (Corning-made glass), stainless steel frame<br>
-               <dfn> SIM</dfn>	Nano-SIM and eSIM - International
-                Dual eSIM with multiple numbers - USA
-                Dual SIM (Nano-SIM, dual stand-by) - China<br>
-                     IP68 dust/water resistant (up to 6m for 30 min)<br>
-                Apple Pay (Visa, MasterCard, AMEX certified)</li>
-           
-                <li><b>DISPLAY:::</b>	----Type----LTPO Super Retina
-                  
-                  <abbr title="amoled ka fancy name"> XDR OLED,</abbr> 
-                  
-                  120Hz, HDR10, Dolby Vision, 1000 nits (typ), 2000 nits (HBM)<br>
+            <div class="feature">
+                <img class="feature-img" src="controller4.jpg" alt="Feature 2">
+                <div>
+                    <h3>Modern Connectivity</h3>
+                    <p>Our controllers are equipped with modern connectivity options, allowing you to easily connect
+                        them to
+                        your favorite gaming platforms and devices.</p>
+                </div>
+            </div>
 
+            <div class="feature">
+                <img class="feature-img" src="controller1.jpg" alt="Feature 3">
+                <div>
+                    <h3>Improved Durability</h3>
+                    <p>We use high-quality materials and robust construction to ensure our controllers are built to
+                        last,
+                        withstanding even the most intense gaming sessions.</p>
+                    <div>
+                    </div>
+                </div>
+    </section>
 
+    <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/5LNFqyQJH7E"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
 
-               ---- Size---	6.1 inches, 91.7 cm2 (~87.0% screen-to-body ratio)<br>
+    <section id="pricing">
+        <h2>Choose the Perfect Controller for Your Gaming Needs</h2>
+        <p>Controllers4U offers competitive pricing on all our retro controllers. Here are our popular models:</p>
 
+        <div id="controllers">
+            <div class="pricing-option">
+                <h3>Classic NES Controller</h3>
+                <img class="controller-img" src="controll3.jpg" alt="Classic NES Controller">
+                <p>Relive the glory days of the Nintendo Entertainment System with our Classic NES Controller. This
+                    iconic controller features the familiar D-pad, A and B buttons, and provides a nostalgic gaming
+                    experience.</p>
+                <p class="price">R449.99</p>
+                <button class="buy-now-button">BUY NOW</button>
+            </div>
 
+            <div class="pricing-option">
+                <h3>SNES Super Controller</h3>
+                <img class="controller-img" src="controll7.jpg" alt="SNES Super Controller">
+                <p>Experience the magic of the Super Nintendo Entertainment System with our SNES Super Controller. This
+                    controller includes the classic colorful buttons, precise D-pad, and shoulder buttons, making it
+                    perfect for SNES gaming.</p>
+                <p class="price">R599.99</p>
+                <button class="buy-now-button">BUY NOW</button>
+            </div>
 
-                ---Resolution---	1179 x 2556 pixels, 19.5:9 ratio (~460 ppi density)<br>
-                ---Protection---	Ceramic Shield glass<br>
+            <div class="pricing-option">
+                <h3>Sega Genesis RetroPad</h3>
+                <img class="controller-img" src="ontroll6.jpg" alt="Sega Genesis RetroPad">
+                <p>Step into the world of Sega Genesis gaming with our Sega Genesis RetroPad. This controller brings
+                    back the memories with its layout of the iconic three-button configuration, enabling you to enjoy
+                    classic Sega games just like you used to.</p>
+                <p class="price">R529.99</p>
+                <button class="buy-now-button">BUY NOW</button>
+            </div>
+        </div>
+    </section>
 
+    <footer>
+        <i>Copyright 2023, Controllers4U</i><br>
+		<i>made by Vikas singh</i>
+    </footer>
 
-                     Always-On display</li>
-            
-                     <li><b>PLATFORM:::</b> ---OS---	<i>iOS 16, upgradable to iOS 16.5, planned upgrade to iOS 17
-                Chipset	Apple A16 Bionic (4 nm)<br>
-
-
-                <strong>---CPU---	Hexa-core (2x3.46 GHz Everest + 4x2.02 GHz Sawtooth)<br>
-                ---GPU	---Apple GPU (5-core graphics)</li></strong>
-          
-          
-                <li><b>MAIN CAMERA:::</b>	Triple	48 MP, f/1.8, 24mm (wide), 1/1.28", 1.22µm,<br> dual pixel PDAF, sensor-shift OIS
-                12 MP, f/2.8, 77mm (telephoto), 1/3.5", PDAF, OIS, 3x optical zoom
-
-
-
-                12 MP, f/2.2, 13mm, 120˚ (ultrawide), 1/2.55", 1.4µm, <br>dual pixel PDAF
-                TOF 3D LiDAR scanner (depth)<br>
-
-
-                ---Features---	Dual-LED dual-tone flash, HDR (photo/panorama)<br>
-                ---Video---	4K@24/25/30/60fps, 1080p@25/30/60/120/240fps, 10-bit HDR, Dolby Vision HDR (up to 60fps), ProRes, Cinematic mode (4K@24/30fps), stereo sound re</li>
-
-
-           
-           
-                <li><b>FEATURES:::</b>	Sensors	Face ID, accelerometer, gyro, proximity, compass, barometer
-                Ultra Wideband (UWB) support<br>
-           Emergency SOS via satellite (SMS sending/receiving)</li></ul></p></div>
-
-
-
-          
-                </i>
-           <div class="advantage">
-           <h2>ADVANTAGES:</h2><hr>
-           
-           <UL type="disc">
-
-           <li> Better viewing angles and lower power consumption</li>
-             <li>Excellent and up-to-date software</li>
-                <li>A big and vibrant screen with excellent display quality</li>
-                  <li>A high-end processor and graphics processor</li>
-                     <li>Great battery life</li>
-                       <li>Superb speakers</li>
-                          <li>Premium and durable build quality</li>
-                            <li>Excellent camera quality</li>
-           </UL>
-      </p>
-      <hr>
-      </div>
-
-
-
-    <div class="newsletter">
-      <h2>Signup for newsletter</h2>
-      <form action="WEB SERVER PAGE KA ADDRESS ">
-        <p>Username:
-         <input type="text" name="username" size="15" 
-         maxlength="30" />
-        </p>
-        <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
-    <input type="submit" value="Submit">
-        </form>
-</div><br>
-<footer align="right"><del>copyright by</del> Vikas singh</footer></div>
 </body>
+
 </html>
