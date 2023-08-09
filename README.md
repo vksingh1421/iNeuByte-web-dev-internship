@@ -8,8 +8,9 @@ REG NO --- INBT01491
 
 
    ########TASK 1#######
-This simple page contain product portfolio website of iphone 14 pro.
-it is made using html and small amount of css.
+This simple page contain product portfolio website GAME CONTROLLERS.
+it is made using html and  css.
+IT IS QUITE INTERACTIVE
 
  ########TASK 2###
   this task contain joke generator app.
