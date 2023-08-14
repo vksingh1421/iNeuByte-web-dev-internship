@@ -1,205 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix clone</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      href="assets/favicon_package/apple-touch-icon.png" />
+    <link
+      rel="android-chrome-512x512"
+      href="assets/favicon_package/android-chrome-512x512.png" />
+    <link
+      rel="android-chrome-192x192"
+      href="assets/favicon_package/android-chrome-192x192.png" />
+    <title>Netflix Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css"
+      rel="stylesheet" />
+  </head>
 
-    <link rel="stylesheet" type="text/css" href="NETFLIXstyle.css">
-    <script src="NETFLIXscript.js"></script>
-</head>
-
-<body>
-<header class="showcase">
-    <div class="showcase-top">
-        <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
+  <body>
+    <header>
+      <div class="conatiner mb-3 my-4" style="top: 10px">
+        <a href="#" target="_self">
+          <img class="header__img" src="./assets/logo.png" alt="logo" />
+        </a>
         <a href="#" class="btn btn-rounded">Sign In</a>
-    </div>
-    <div class="showcase-content">
+      </div>
+    </header>
+    <main>
+      <div class="featured">
+        <h1 class="featured__title">Dark</h1>
+        <div
+          class="featured__buttons container mx-1 mt-6"
+          onclick="displayMsg()">
+          <div class="container mt-1">
+            <button class="button__play my-3">
+              <i class="fas fa-play mx-1"></i>Play
+            </button>
+            <button class="button__list mx-2 my-3">
+              <i class="fas fa-list"></i> My List
+            </button>
+          </div>
+          <p class="featured__description">
+            When two children go missing in a small German town, its sinful past
+            is exposed along with the double lives and fractured
+            relationships...
+          </p>
+        </div>
+      </div>
+      <div class="showcase-content">
         <h1>See what's next</h1>
         <p>Watch anywhere. Cancel Anytime</p>
-        <a href="#" class="btn btn-xl"
-            >Watch Free For 30 Days <i class="fas fa-chevron-right btn-icon"></i
-        ></a>
+      </div>
+      <div class="netflixOriginals">
+        <div class="original__header">
+          <h2 class="headings">NETFLIX ORIGINALS</h2>
+        </div>
+        <div class="original__movies" style="width: max-content">
+          <!-- Orignal Movies List Here -->
+        </div>
+      </div>
+      <div id="wishlist"></div>
+      <div class="movies__header">
+        <h2 class="headings">Trending Now</h2>
+      </div>
+      <div id="trending" class="movies__container">
+        <!-- Trending Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Top Rated</h2>
+      </div>
+      <div id="top_rated" class="movies__container">
+        <!-- Top Rated Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Action</h2>
+      </div>
+      <div id="action" class="movies__container">
+        <!-- Action Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Adventure</h2>
+      </div>
+      <div id="adventure" class="movies__container">
+        <!-- Adventure Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Animation</h2>
+      </div>
+      <div id="animation" class="movies__container">
+        <!-- Animation Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Thriller</h2>
+      </div>
+      <div id="thriller" class="movies__container">
+        <!-- Thriller Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Science Fiction</h2>
+      </div>
+      <div id="science_fiction" class="movies__container">
+        <!-- Science Fiction Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Crime</h2>
+      </div>
+      <div id="crime" class="movies__container">
+        <!-- Crime Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Comedy</h2>
+      </div>
+      <div id="comedy" class="movies__container">
+        <!-- Comedy Movies List Here -->
+      </div>
+      <div class="movies__header">
+        <h2 class="headings">Documentary</h2>
+      </div>
+      <div id="documentary" class="movies__container">
+        <!-- Documentary Movies List Here -->
+      </div>
+    </main>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="trailerModal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span class="movieNotFound">Trailer Not Found</span>
+            <iframe
+              id="movieTrailer"
+              height="400"
+              src=""
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
-</header>
-<section class="tabs">
+
     <div class="container">
-        <div id="tab-1" class="tab-item tab-border">
-            <i class="fas fa-door-open fa-3x"></i>
-            <p class="hide-sm">Cancel at any time</p>
-        </div>
-        <div id="tab-2" class="tab-item">
-            <i class="fas fa-tablet-alt fa-3x"></i>
-            <p class="hide-sm">Watch anywhere</p>
-        </div>
-        <div id="tab-3" class="tab-item">
-            <i class="fas fa-tags fa-3x"></i>
-            <p class="hide-sm">Pick your price</p>
-        </div>
-    </div>
-</section>
-
-<section class="tab-content">
-    <div class="container">
-        <!-- Tab Content 1 -->
-        <div id="tab-1-content" class="tab-content-item show">
-            <div class="tab-1-content-inner">
-                <div>
-                    <p class="text-lg">
-                        If you decide Netflix isn't for you - no problem. No commitment.
-                        Cancel online anytime.
-                    </p>
-                    <a href="#" class="btn btn-lg">Watch Free For 30 Days</a>
-                </div>
-                <img src="https://i.ibb.co/J2xDJV7/tab-content-1.png" alt="" />
-            </div>
-        </div>
-
-        <!-- Tab Content 2 -->
-        <div id="tab-2-content" class="tab-content-item">
-            <div class="tab-2-content-top">
-                <p class="text-lg">
-                    Watch TV shows and movies anytime, anywhere — personalized for
-                    you.
-                </p>
-                <a href="#" class="btn btn-lg">Watch Free For 30 Days</a>
-            </div>
-            <div class="tab-2-content-bottom">
-                <div>
-                    <img src="https://i.ibb.co/DpdN7Gn/tab-content-2-1.png" alt="" />
-                    <p class="text-md">
-                        Watch on your TV
-                    </p>
-                    <p class="text-dark">
-                        Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray
-                        players and more.
-                    </p>
-                </div>
-                <div>
-                    <img src="https://i.ibb.co/R3r1SPX/tab-content-2-2.png" alt="" />
-                    <p class="text-md">
-                        Watch instantly or download for later
-                    </p>
-                    <p class="text-dark">
-                        Available on phone and tablet, wherever you go.
-                    </p>
-                </div>
-                <div>
-                    <img src="https://i.ibb.co/gDhnwWn/tab-content-2-3.png" alt="" />
-                    <p class="text-md">
-                        Use any computer
-                    </p>
-                    <p class="text-dark">
-                        Watch right on Netflix.com.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab Content 3 -->
-        <div id="tab-3-content" class="tab-content-item">
-            <div class="text-center">
-                <p class="text-lg">
-                    Choose one plan and watch everything on Netflix.
-                </p>
-                <a href="#" class="btn btn-lg">Watch Free For 30 Days</a>
-            </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Basic</th>
-                        <th>Standard</th>
-                        <th>Premium</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Monthly price after free month ends on 6/19/19</td>
-                        <td>$8.99</td>
-                        <td>$12.99</td>
-                        <td>$15.99</td>
-                    </tr>
-                    <tr>
-                        <td>HD Available</td>
-                        <td><i class="fas fa-times"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Ultra HD Available</td>
-                        <td><i class="fas fa-times"></i></td>
-                        <td><i class="fas fa-times"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Screens you can watch on at the same time</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>Watch on your laptop, TV, phone and tablet</td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Unlimited movies and TV shows</td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Cancel anytime</td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>First month free</td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <p>Questions? Call 1-866-579-7172</p>
-    <div class="footer-cols">
-        <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Ways To Watch</a></li>
-            <li><a href="#">Corporate Information</a></li>
-            <li><a href="#">Netflix Originals</a></li>
-        </ul>
-        <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Terms Of Use</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-        <ul>
-            <li><a href="#">Account</a></li>
-            <li><a href="#">Redeem Gift Cards</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Speed Test</a></li>
-        </ul>
-        <ul>
-            <li><a href="#">Media Center</a></li>
-            <li><a href="#">Buy Gift Cards</a></li>
-            <li><a href="#">Cookie Preferences</a></li>
-            <li><a href="#">Legal Notices</a></li>
-        </ul>
+      <span><br /><br /></span>
     </div>
 
-</footer>
-</body>
+    <footer
+      class="text-gray-600 body-font"
+      style="background-color: #343a40; margin-bottom: -5rem; margin-top: 1rem">
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+        <a
+          class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+          <img
+            src="./assets/favicon_package/favicon-32x32.png"
+            alt="Footer logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top"
+            style="height: 50px; width: 50px" />
+
+          <span
+            class="ml-3 text-xl"
+            style="
+              color: antiquewhite;
+              font-size: larger;
+              font-weight: bold;
+              text-decoration: none;
+            ">
+            Netflix Clone
+          </span>
+        </a>
+        <p
+          class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+          © 2023 Netflix Clone
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+          <!--Facebook-->
+          <a
+            class="text-gray-500"
+            href="https://www.facebook.com"
+            rel="noopener"
+            target="_blank"
+            title="Facebook">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+
+          <!--Github-->
+          <a
+            class="ml-3 text-gray-500"
+            href="https://www.github.com/Mubassim-Khan"
+            title="GitHub"
+            rel="noopener"
+            target="_blank">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="octicon octicon-mark-github"
+              viewBox="0 0 16 16"
+              version="1.1"
+              height="20"
+              width="24">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+          </a>
+
+          <!--Instagram-->
+          <a
+            class="ml-3 text-gray-500"
+            href="https://www.instagram.com/mubassimkhan_08/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
+            title="Instagram"
+            rel="noopener"
+            target="_blank">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+
+          <!--LinkedIn-->
+          <a
+            class="ml-3 text-gray-500"
+            href="https://www.linkedin.com/in/mubassim-ahmed-khan-8b835025a/"
+            rel="noopener"
+            target="_blank"
+            title="LinkedIn" />
+          <svg
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="0"
+            class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path
+              stroke="none"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </span>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+  </body>
 </html>
